@@ -1,3 +1,4 @@
+import 'package:adminpannelweb/task_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,7 +36,13 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Task",
             svgSrc: "assets/icons/menu_task.svg",
-            press: () {},
+            press: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => TaskPage(),
+                ),
+              );
+            },
           ),
           DrawerListTile(
             title: "Documents",
