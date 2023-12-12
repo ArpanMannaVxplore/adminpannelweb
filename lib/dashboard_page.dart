@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:adminpannelweb/side_menubar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
