@@ -3,6 +3,7 @@ import 'package:adminpannelweb/side_menubar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart' as newPieChart;
+import 'package:responsive_framework/responsive_framework.dart';
 
 class DataItem {
   int x;
@@ -137,223 +138,237 @@ class _DashboardPageState extends State<DashboardPage> {
             SizedBox(
               height: 50,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.0, //extend the shadow
-                          offset: const Offset(
-                            5.0, // Move to right 10  horizontally
-                            5.0, // Move to bottom 10 Vertically
+            ResponsiveRowColumn(
+              rowMainAxisAlignment: MainAxisAlignment.center,
+              rowPadding: const EdgeInsets.all(30),
+              columnPadding: const EdgeInsets.all(30),
+              layout: ResponsiveBreakpoints.of(context).isDesktop
+                  ? ResponsiveRowColumnType.ROW
+                  : ResponsiveRowColumnType.COLUMN,
+               children: [
+              ResponsiveRowColumnItem(
+
+                child: Container(
+                    height: 300,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                            offset: const Offset(
+                              5.0, // Move to right 10  horizontally
+                              5.0, // Move to bottom 10 Vertically
+                            ),
                           ),
-                        ),
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.0, //extend the shadow
-                          offset: const Offset(
-                            -5.0, // Move to right 10  horizontally
-                            -5.0, // Move to bottom 10 Vertically
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                            offset: const Offset(
+                              -5.0, // Move to right 10  horizontally
+                              -5.0, // Move to bottom 10 Vertically
+                            ),
                           ),
-                        ),
-                      ],
-                      border: Border.all(color: Colors.white)),
-                  padding: EdgeInsets.only(top: 40),
-                  width: 300,
-                  child: newPieChart.PieChart(
-                    // Pass in the data for
-                    // the pie chart
-                    dataMap: dataMap,
-                    // Set the colors for the
-                    // pie chart segments
-                    colorList: colorList,
-                    // Set the radius of the pie chart
-                    chartRadius: MediaQuery.of(context).size.width / 2,
-                    // Set the center text of the pie chart
-                    // Set the width of the
-                    // ring around the pie chart
-                    ringStrokeWidth: 24,
-                    // Set the animation duration of the pie chart
-                    animationDuration: const Duration(seconds: 3),
-                    // Set the options for the chart values (e.g. show percentages, etc.)
-                    chartValuesOptions: newPieChart.ChartValuesOptions(
-                        showChartValues: true,
-                        showChartValuesOutside: true,
-                        showChartValuesInPercentage: true,
-                        showChartValueBackground: false),
-                    // Set the options for the legend of the pie chart
-                    legendOptions: newPieChart.LegendOptions(
-                        showLegends: true,
-                        legendShape: BoxShape.rectangle,
-                        legendTextStyle:
-                            TextStyle(fontSize: 15, color: Colors.black),
-                        legendPosition: newPieChart.LegendPosition.bottom,
-                        showLegendsInRow: true),
-                    // Set the list of gradients for
-                    // the background of the pie chart
-                    gradientList: gradientList,
+                        ],
+                        border: Border.all(color: Colors.white)),
+                    padding: EdgeInsets.only(top: 40),
+                    width: 300,
+                    child: newPieChart.PieChart(
+                      // Pass in the data for
+                      // the pie chart
+                      dataMap: dataMap,
+                      // Set the colors for the
+                      // pie chart segments
+                      colorList: colorList,
+                      // Set the radius of the pie chart
+                      chartRadius: MediaQuery.of(context).size.width / 2,
+                      // Set the center text of the pie chart
+                      // Set the width of the
+                      // ring around the pie chart
+                      ringStrokeWidth: 24,
+                      // Set the animation duration of the pie chart
+                      animationDuration: const Duration(seconds: 3),
+                      // Set the options for the chart values (e.g. show percentages, etc.)
+                      chartValuesOptions: newPieChart.ChartValuesOptions(
+                          showChartValues: true,
+                          showChartValuesOutside: true,
+                          showChartValuesInPercentage: true,
+                          showChartValueBackground: false),
+                      // Set the options for the legend of the pie chart
+                      legendOptions: newPieChart.LegendOptions(
+                          showLegends: true,
+                          legendShape: BoxShape.rectangle,
+                          legendTextStyle:
+                              TextStyle(fontSize: 15, color: Colors.black),
+                          legendPosition: newPieChart.LegendPosition.bottom,
+                          showLegendsInRow: true),
+                      // Set the list of gradients for
+                      // the background of the pie chart
+                      gradientList: gradientList,
+                    ),
                   ),
-                ),
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.0, //extend the shadow
-                          offset: const Offset(
-                            5.0, // Move to right 10  horizontally
-                            5.0, // Move to bottom 10 Vertically
+              ),
+                ResponsiveRowColumnItem(
+
+                  child: Container(
+                    height: 300,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                            offset: const Offset(
+                              5.0, // Move to right 10  horizontally
+                              5.0, // Move to bottom 10 Vertically
+                            ),
                           ),
-                        ),
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.0, //extend the shadow
-                          offset: const Offset(
-                            -5.0, // Move to right 10  horizontally
-                            -5.0, // Move to bottom 10 Vertically
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                            offset: const Offset(
+                              -5.0, // Move to right 10  horizontally
+                              -5.0, // Move to bottom 10 Vertically
+                            ),
                           ),
-                        ),
-                      ],
-                      border: Border.all(color: Colors.white)),
-                  padding: EdgeInsets.only(top: 40),
-                  width: 300,
-                  child: LineChart(
-                    LineChartData(
-                      borderData: FlBorderData(show: false),
-                      lineBarsData: [
-                        // The red line
-                        LineChartBarData(
-                          spots: dummyData1,
-                          isCurved: true,
-                          barWidth: 3,
-                          color: Colors.indigo,
-                        ),
-                        // The orange line
-                        LineChartBarData(
-                          spots: dummyData2,
-                          isCurved: true,
-                          barWidth: 3,
-                          color: Colors.red,
-                        ),
-                        // The blue line
-                        LineChartBarData(
-                          spots: dummyData3,
-                          isCurved: false,
-                          barWidth: 3,
-                          color: Colors.blue,
-                        )
-                      ],
+                        ],
+                        border: Border.all(color: Colors.white)),
+                    padding: EdgeInsets.only(top: 40),
+                    width: 300,
+                    child: LineChart(
+                      LineChartData(
+                        borderData: FlBorderData(show: false),
+                        lineBarsData: [
+                          // The red line
+                          LineChartBarData(
+                            spots: dummyData1,
+                            isCurved: true,
+                            barWidth: 3,
+                            color: Colors.indigo,
+                          ),
+                          // The orange line
+                          LineChartBarData(
+                            spots: dummyData2,
+                            isCurved: true,
+                            barWidth: 3,
+                            color: Colors.red,
+                          ),
+                          // The blue line
+                          LineChartBarData(
+                            spots: dummyData3,
+                            isCurved: false,
+                            barWidth: 3,
+                            color: Colors.blue,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.0, //extend the shadow
-                          offset: const Offset(
-                            5.0, // Move to right 10  horizontally
-                            5.0, // Move to bottom 10 Vertically
+                ResponsiveRowColumnItem(
+
+                  child: Container(
+                    height: 300,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                            offset: const Offset(
+                              5.0, // Move to right 10  horizontally
+                              5.0, // Move to bottom 10 Vertically
+                            ),
                           ),
-                        ),
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.0, //extend the shadow
-                          offset: const Offset(
-                            -5.0, // Move to right 10  horizontally
-                            -5.0, // Move to bottom 10 Vertically
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 8.0, // soften the shadow
+                            spreadRadius: 0.0, //extend the shadow
+                            offset: const Offset(
+                              -5.0, // Move to right 10  horizontally
+                              -5.0, // Move to bottom 10 Vertically
+                            ),
                           ),
-                        ),
-                      ],
-                      border: Border.all(color: Colors.white)),
-                  padding: EdgeInsets.only(top: 40),
-                  width: 300,
-                  child: BarChart(BarChartData(
-                      borderData: FlBorderData(
-                          border: const Border(
-                        top: BorderSide.none,
-                        right: BorderSide.none,
-                        left: BorderSide(width: 1),
-                        bottom: BorderSide(width: 1),
-                      )),
-                      groupsSpace: 10,
-                      barGroups: [
-                        BarChartGroupData(x: 1, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 10,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 2, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 10,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 3, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 15,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 4, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 10,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 5, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 11,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 6, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 10,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 7, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 10,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                        BarChartGroupData(x: 8, barRods: [
-                          BarChartRodData(
-                              fromY: 0,
-                              toY: 10,
-                              width: 15,
-                              color: Colors.amber),
-                        ]),
-                      ])),
+                        ],
+                        border: Border.all(color: Colors.white)),
+                    padding: EdgeInsets.only(top: 40),
+                    width: 300,
+                    child: BarChart(BarChartData(
+                        borderData: FlBorderData(
+                            border: const Border(
+                          top: BorderSide.none,
+                          right: BorderSide.none,
+                          left: BorderSide(width: 1),
+                          bottom: BorderSide(width: 1),
+                        )),
+                        groupsSpace: 10,
+                        barGroups: [
+                          BarChartGroupData(x: 1, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 10,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 2, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 10,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 3, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 15,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 4, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 10,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 5, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 11,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 6, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 10,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 7, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 10,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                          BarChartGroupData(x: 8, barRods: [
+                            BarChartRodData(
+                                fromY: 0,
+                                toY: 10,
+                                width: 15,
+                                color: Colors.amber),
+                          ]),
+                        ])),
+                  ),
                 ),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:adminpannelweb/dashboard_page.dart';
 import 'package:adminpannelweb/profile_page.dart';
 import 'package:adminpannelweb/task_page.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,13 @@ class SideMenu extends StatelessWidget {
           DrawerListTile(
             title: "Dashboard",
             svgSrc: "assets/icons/menu_dashboard.svg",
-            press: () {},
+            press: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DashboardPage(),
+                ),
+              );
+            },
           ),
           DrawerListTile(
             title: "Transaction",
